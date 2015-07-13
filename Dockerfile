@@ -28,8 +28,8 @@ EXPOSE 8080
 CMD ["./bin/catalina.sh", "run"]
 
 # --------------------------------------------------------------------- teamcity
-ENV TEAMCITY_VERSION 9.0.5 \
- TEAMCITY_DATA_PATH /apache-tomcat/teamcity 
+ENV TEAMCITY_DATA_PATH /apache-tomcat/teamcity 
+ENV TEAMCITY_VERSION 9.0.5
 
 RUN mkdir TEAMCITY_DATA_PATH \
  && curl -LO http://download.jetbrains.com/teamcity/TeamCity-$TEAMCITY_VERSION.war \
