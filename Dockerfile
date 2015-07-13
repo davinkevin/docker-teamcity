@@ -28,10 +28,12 @@ EXPOSE 8080
 CMD ["./bin/catalina.sh", "run"]
 
 # --------------------------------------------------------------------- teamcity
-ENV TEAMCITY_VERSION 9.0.5
+ENV TEAMCITY_VERSION 9.0.5 \
+ TEAMCITY_DATA_PATH /apache-tomcat/teamcity 
 
-RUN curl -LO http://download.jetbrains.com/teamcity/TeamCity-$TEAMCITY_VERSION.war \
- && unzip -qq TeamCity-$TEAMCITY_VERSION.war -d webapps/teamcity \
+RUN mkdir TEAMCITY_DATA_PATH
+ && curl -LO http://download.jetbrains.com/teamcity/TeamCity-$TEAMCITY_VERSION.war \
+ && unzip -qq TeamCity-$TEAMCITY_VERSION.war -d webapps/ROOT \
  && rm -f TeamCity-$TEAMCITY_VERSION.war \
 
  && rm -f  webapps/teamcity/WEB-INF/plugins/clearcase.zip                  \
@@ -45,3 +47,5 @@ RUN curl -LO http://download.jetbrains.com/teamcity/TeamCity-$TEAMCITY_VERSION.w
  && rm -Rf webapps/teamcity/WEB-INF/plugins/dot*                           \
 
  && echo '<meta name="mobile-web-app-capable" content="yes">' >> webapps/teamcity/WEB-INF/tags/pageMeta.tag
+
+VOLUME ["${TEAMCITY_DATA_PATH}"]
