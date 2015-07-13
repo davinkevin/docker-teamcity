@@ -36,16 +36,16 @@ RUN mkdir TEAMCITY_DATA_PATH \
  && unzip -qq TeamCity-$TEAMCITY_VERSION.war -d webapps/ROOT \
  && rm -f TeamCity-$TEAMCITY_VERSION.war \
 
- && rm -f  webapps/teamcity/WEB-INF/plugins/clearcase.zip                  \
- && rm -f  webapps/teamcity/WEB-INF/plugins/mercurial.zip                  \
- && rm -f  webapps/teamcity/WEB-INF/plugins/eclipse-plugin-distributor.zip \
- && rm -f  webapps/teamcity/WEB-INF/plugins/vs-addin-distributor.zip       \
- && rm -f  webapps/teamcity/WEB-INF/plugins/win32-distributor.zip          \
- && rm -Rf webapps/teamcity/WEB-INF/plugins/svn                            \
- && rm -Rf webapps/teamcity/WEB-INF/plugins/tfs                            \
- && rm -Rf webapps/teamcity/WEB-INF/plugins/vss                            \
- && rm -Rf webapps/teamcity/WEB-INF/plugins/dot*                           \
+ && rm -f  webapps/ROOT/WEB-INF/plugins/clearcase.zip                  \
+ && rm -f  webapps/ROOT/WEB-INF/plugins/mercurial.zip                  \
+ && rm -f  webapps/ROOT/WEB-INF/plugins/eclipse-plugin-distributor.zip \
+ && rm -f  webapps/ROOT/WEB-INF/plugins/vs-addin-distributor.zip       \
+ && rm -f  webapps/ROOT/WEB-INF/plugins/win32-distributor.zip          \
+ && rm -Rf webapps/ROOT/WEB-INF/plugins/svn                            \
+ && rm -Rf webapps/ROOT/WEB-INF/plugins/tfs                            \
+ && rm -Rf webapps/ROOT/WEB-INF/plugins/vss                            \
+ && rm -Rf webapps/ROOT/WEB-INF/plugins/dot*                           \
 
- && echo '<meta name="mobile-web-app-capable" content="yes">' >> webapps/teamcity/WEB-INF/tags/pageMeta.tag
+ && echo '<meta name="mobile-web-app-capable" content="yes">' >> webapps/ROOT/WEB-INF/tags/pageMeta.tag
 
 VOLUME ["${TEAMCITY_DATA_PATH}"]
