@@ -31,7 +31,7 @@ CMD ["./bin/catalina.sh", "run"]
 ENV TEAMCITY_DATA_PATH /apache-tomcat/teamcity 
 ENV TEAMCITY_VERSION 9.0.5
 
-RUN mkdir TEAMCITY_DATA_PATH \
+RUN mkdir $TEAMCITY_DATA_PATH \
  && curl -LO http://download.jetbrains.com/teamcity/TeamCity-$TEAMCITY_VERSION.war \
  && unzip -qq TeamCity-$TEAMCITY_VERSION.war -d webapps/ROOT \
  && rm -f TeamCity-$TEAMCITY_VERSION.war \
